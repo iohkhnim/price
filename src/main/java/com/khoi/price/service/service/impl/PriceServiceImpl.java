@@ -8,11 +8,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PriceServiceImpl extends BaseServiceImpl<Price, Integer> implements IPriceService {
-  /*I< Foo > dao;
 
-  @Autowired
-  public void setDao( IGenericDao< Foo > daoToSet ){
-    dao = daoToSet;
-    dao.setClazz( Foo.class );
-  }*/
 }
