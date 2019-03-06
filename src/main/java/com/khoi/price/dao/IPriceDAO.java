@@ -1,9 +1,14 @@
 package com.khoi.price.dao;
 
+import com.khoi.basecrud.dao.IBaseDAO;
 import com.khoi.price.dto.Price;
 import java.util.List;
-import com.khoi.basecrud.dao.IBaseDAO;
 
-public interface IPriceDAO extends IBaseDAO<Price, Integer>{
+public interface IPriceDAO extends IBaseDAO<Price, Integer> {
 
+  public List<Integer> findPrices(int product_id);
+
+  public List<Integer> findPrice(int product_id);
+
+  public List<Price> findProductPriceHistory(int product_id);
 }

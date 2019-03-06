@@ -63,4 +63,25 @@ public class PriceController {
       return new ResponseEntity<Void>(HttpStatus.CONFLICT);
     }
   }
+
+  @GetMapping("findProductPrice/{product_id}")
+  public ResponseEntity<List<Integer>> findProductPrice(
+      @PathVariable("product_id") int product_id) {
+    List<Integer> list = priceService.findPrice(product_id);
+    return new ResponseEntity<List<Integer>>(list, HttpStatus.OK);
+  }
+
+  @GetMapping("findProductPrices/{product_id}")
+  public ResponseEntity<List<Integer>> findProductPrices(
+      @PathVariable("product_id") int product_id) {
+    List<Integer> list = priceService.findPrices(product_id);
+    return new ResponseEntity<List<Integer>>(list, HttpStatus.OK);
+  }
+
+  @GetMapping("findProductPriceHistory/{product_id}")
+  public ResponseEntity<List<Price>> findProductPriceHistory(
+      @PathVariable("product_id") int product_id) {
+    List<Price> list = priceService.findProductPriceHistory(product_id);
+    return new ResponseEntity<List<Price>>(list, HttpStatus.OK);
+  }
 }
