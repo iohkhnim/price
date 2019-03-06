@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("price")
@@ -64,11 +66,22 @@ public class PriceController {
     }
   }
 
+  @DeleteMapping("deleteByProductId/{id}")
+  public ResponseEntity<Void> deleteByProductId(@PathVariable("id") int pid) {
+    Boolean flag = priceService.deleteByProductId(pid);
+    if (flag.equals(true)) {
+      return new ResponseEntity<Void>(HttpStatus.OK);
+    } else {
+      return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+    }
+  }
+
   @GetMapping("findProductPrice/{product_id}")
-  public ResponseEntity<List<Integer>> findProductPrice(
+  @ResponseBody
+  public int findProductPrice2(
       @PathVariable("product_id") int product_id) {
-    List<Integer> list = priceService.findPrice(product_id);
-    return new ResponseEntity<List<Integer>>(list, HttpStatus.OK);
+    int i = priceService.findPrice2(product_id);
+    return i;
   }
 
   @GetMapping("findProductPrices/{product_id}")

@@ -11,4 +11,8 @@ public interface IPriceService extends IBaseService<Price, Integer> {
   List<Integer> findPrices(int product_id);
 
   List<Price> findProductPriceHistory(int product_id);
+
+  int findPrice2(int product_id);
+
+  Boolean deleteByProductId(int product_id);
 }

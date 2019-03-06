@@ -15,7 +15,7 @@ public class PriceServiceImpl extends BaseServiceImpl<Price, Integer> implements
   private IPriceDAO priceDAO;
 
   @Override
-  public List<Integer> findPrice(int product_id){
+  public List<Integer> findPrice(int product_id) {
     return priceDAO.findPrice(product_id);
   }
 
@@ -27,5 +27,15 @@ public class PriceServiceImpl extends BaseServiceImpl<Price, Integer> implements
   @Override
   public List<Price> findProductPriceHistory(int product_id) {
     return priceDAO.findProductPriceHistory(product_id);
+  }
+
+  @Override
+  public int findPrice2(int product_id) {
+    return priceDAO.findPrice2(product_id);
+  }
+
+  @Override
+  public Boolean deleteByProductId(int product_id) {
+    return priceDAO.deleteByProductId(product_id);
   }
 }
