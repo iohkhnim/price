@@ -6,6 +6,8 @@ import com.khoi.price.dto.Price;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 @Repository
 public class ImplPriceDAO extends BaseDAOImpl<Price, Integer> implements IPriceDAO {
