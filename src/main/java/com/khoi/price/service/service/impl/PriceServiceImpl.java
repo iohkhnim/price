@@ -1,4 +1,4 @@
-package com.khoi.price.service.service.impl;
+/*package com.khoi.price.service.service.impl;
 
 import com.khoi.basecrud.service.service.impl.BaseServiceImpl;
 import com.khoi.price.dao.IPriceDAO;
@@ -7,7 +7,6 @@ import com.khoi.price.service.IPriceService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 @Service
 public class PriceServiceImpl extends BaseServiceImpl<Price, Integer> implements IPriceService {
 
@@ -39,3 +38,4 @@ public class PriceServiceImpl extends BaseServiceImpl<Price, Integer> implements
     return priceDAO.deleteByProductId(product_id);
   }
 }
+*/

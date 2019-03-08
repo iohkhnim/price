@@ -1,4 +1,4 @@
-package com.khoi.price.controller;
+/*package com.khoi.price.controller;
 
 import com.khoi.price.dto.Price;
 import com.khoi.price.service.IPriceService;
@@ -98,3 +98,4 @@ public class PriceController {
     return new ResponseEntity<List<Price>>(list, HttpStatus.OK);
   }
 }
+*/
