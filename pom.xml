@@ -22,6 +22,7 @@
       <groupId>com.khoi</groupId>
       <artifactId>realproto</artifactId>
       <version>0.0.1-SNAPSHOT</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -63,6 +64,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+
+      <plugin>
+        <inherited>true</inherited>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+
     </plugins>
   </build>
 </project>
