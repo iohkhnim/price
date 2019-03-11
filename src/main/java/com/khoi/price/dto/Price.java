@@ -37,7 +37,7 @@ public class Price extends baseDTO implements Serializable {
 
   public PriceEntry toProto() {
     return PriceEntry.newBuilder().setId(getId()).setProductId(getProduct_id())
-        .setProductId(getProduct_id()).build();
+        .setPrice(getPrice()).build();
   }
 
   public static Price fromProto(PriceEntry proto){
