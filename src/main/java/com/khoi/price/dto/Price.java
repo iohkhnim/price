@@ -1,8 +1,9 @@
 package com.khoi.price.dto;
 
 import com.khoi.basecrud.dto.baseDTO;
+import com.khoi.proto.CreateResponse;
 import com.khoi.proto.PriceEntry;
-import com.khoi.proto.createRequest;
+import com.khoi.proto.CreateRequest;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,7 +47,7 @@ public class Price extends baseDTO implements Serializable {
     return price;
   }
 
-  public static Price fromProto(createRequest proto){
+  public static Price fromProto(CreateRequest proto){
     Price price = new Price();
     price.setPrice(proto.getPrice());
     price.setProduct_id(proto.getProductId());
