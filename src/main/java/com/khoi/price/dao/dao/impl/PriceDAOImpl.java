@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public class ImplPriceDAO extends BaseDAOImpl<Price, Integer> implements IPriceDAO {
+public class PriceDAOImpl extends BaseDAOImpl<Price, Integer> implements IPriceDAO {
 
   public List<Integer> findPrice(int product_id) {
     String hql = "SELECT obj.price FROM Price obj WHERE obj.product_id = " + product_id
