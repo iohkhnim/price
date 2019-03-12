@@ -1,9 +1,8 @@
 package com.khoi.price.dto;
 
 import com.khoi.basecrud.dto.baseDTO;
-import com.khoi.proto.CreateResponse;
-import com.khoi.proto.PriceEntry;
 import com.khoi.proto.CreateRequest;
+import com.khoi.proto.PriceEntry;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +17,20 @@ public class Price extends baseDTO implements Serializable {
 
   @Column(name = "price")
   private int price;
+
+  public static Price fromProto(PriceEntry proto) {
+    Price price = new Price();
+    price.setPrice(proto.getPrice());
+    price.setProduct_id(proto.getProductId());
+    return price;
+  }
+
+  public static Price fromProto(CreateRequest proto) {
+    Price price = new Price();
+    price.setPrice(proto.getPrice());
+    price.setProduct_id(proto.getProductId());
+    return price;
+  }
 
   public int getProduct_id() {
     return product_id;
@@ -37,21 +50,8 @@ public class Price extends baseDTO implements Serializable {
 
   public PriceEntry toProto() {
     return PriceEntry.newBuilder().setId(getId()).setProductId(getProduct_id())
-        .setPrice(getPrice()).build();
-  }
-
-  public static Price fromProto(PriceEntry proto){
-    Price price = new Price();
-    price.setPrice(proto.getPrice());
-    price.setProduct_id(proto.getProductId());
-    return price;
-  }
-
-  public static Price fromProto(CreateRequest proto){
-    Price price = new Price();
-    price.setPrice(proto.getPrice());
-    price.setProduct_id(proto.getProductId());
-    return price;
+        .setPrice(getPrice()).setCreatedTime(getCreatedTime().getTime())
+        .setUpdatedTime(getUpdatedTime().getTime()).build();
   }
 
 }
