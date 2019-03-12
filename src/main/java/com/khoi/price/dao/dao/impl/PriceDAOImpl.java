@@ -12,13 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public class PriceDAOImpl extends BaseDAOImpl<Price, Integer> implements IPriceDAO {
 
-  public List<Integer> findPrice(int product_id) {
+  /*public List<Integer> findPrice(int product_id) {
     String hql = "SELECT obj.price FROM Price obj WHERE obj.product_id = " + product_id
         + " ORDER BY obj.createdTime DESC";
     Query query = entityManager.createQuery(hql, Integer.class);
     List<Integer> a = (List<Integer>) query.setMaxResults(1).getResultList();
     return a;
-  }
+  }*/
 
   public int findPrice2(int product_id) {
     String hql = "SELECT obj.price FROM Price obj WHERE obj.product_id = :prodid ORDER BY obj.createdTime DESC";

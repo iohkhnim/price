@@ -8,7 +8,7 @@ public interface IPriceDAO extends IBaseDAO<Price, Integer> {
 
   public List<Integer> findPrices(int product_id);
 
-  public List<Integer> findPrice(int product_id);
+  //public List<Integer> findPrice(int product_id);
 
   public List<Price> findProductPriceHistory(int product_id);
 
