@@ -4,6 +4,7 @@ import com.khoi.basecrud.dto.baseDTO;
 import com.khoi.proto.CreateRequest;
 import com.khoi.proto.PriceEntry;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -20,8 +21,11 @@ public class Price extends baseDTO implements Serializable {
 
   public static Price fromProto(PriceEntry proto) {
     Price price = new Price();
+    price.setId(proto.getId());
     price.setPrice(proto.getPrice());
     price.setProduct_id(proto.getProductId());
+    price.setCreatedTime(new Date(proto.getCreatedTime()));
+    price.setUpdatedTime(new Date(proto.getUpdatedTime()));
     return price;
   }
 
