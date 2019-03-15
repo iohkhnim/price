@@ -4,6 +4,8 @@ import com.khoi.basecrud.dto.baseDTO;
 import com.khoi.proto.CreateRequest;
 import com.khoi.proto.PriceEntry;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +20,11 @@ public class Price extends baseDTO implements Serializable {
 
   @Column(name = "price")
   private int price;
+
+  private String convertDate2String(Date date){
+    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    return dateFormat.format(date);
+  }
 
   public static Price fromProto(PriceEntry proto) {
     Price price = new Price();
@@ -54,8 +61,8 @@ public class Price extends baseDTO implements Serializable {
 
   public PriceEntry toProto() {
     return PriceEntry.newBuilder().setId(getId()).setProductId(getProduct_id())
-        .setPrice(getPrice()).setCreatedTime(getCreatedTime().getTime())
-        .setUpdatedTime(getUpdatedTime().getTime()).build();
+        .setPrice(getPrice()).setCreatedTime(convertDate2String(getCreatedTime()))
+        .setUpdatedTime(convertDate2String(getUpdatedTime())).build();
   }
 
 }
