@@ -24,7 +24,7 @@ public class PriceServiceGrpcImpl extends PriceServiceGrpc.PriceServiceImplBase 
   @Override
   public void getPriceHistory(GetPriceHistoryRequest request,
       StreamObserver<PriceEntry> streamObserver) {
-    priceDAO.findProductPriceHistory(request.getProductId()).forEach(e -> {
+    priceDAO.findProductPriceHistory(request.getProductId()).stream().forEach(e -> {
       streamObserver.onNext(e.toProto());
     });
     streamObserver.onCompleted();
