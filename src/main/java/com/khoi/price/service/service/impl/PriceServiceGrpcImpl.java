@@ -33,7 +33,7 @@ public class PriceServiceGrpcImpl extends PriceServiceGrpc.PriceServiceImplBase 
   @Override
   public void getPrice(GetPriceRequest request, StreamObserver<GetPriceResponse> streamObserver) {
     streamObserver.onNext(
-        GetPriceResponse.newBuilder().setPrice(priceDAO.findPrice2(request.getProductId()))
+        GetPriceResponse.newBuilder().setPrice(priceDAO.findPrice(request.getProductId()))
             .build());
     streamObserver.onCompleted();
   }

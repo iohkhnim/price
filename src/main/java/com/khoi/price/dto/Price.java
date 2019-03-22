@@ -21,26 +21,28 @@ public class Price extends baseDTO implements Serializable {
   @Column(name = "price")
   private int price;
 
-  private String convertDate2String(Date date){
-    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-    return dateFormat.format(date);
-  }
-
-  public static Price fromProto(PriceEntry proto) {
-    Price price = new Price();
-    price.setId(proto.getId());
-    price.setPrice(proto.getPrice());
-    price.setProduct_id(proto.getProductId());
-    price.setCreatedTime(new Date(proto.getCreatedTime()));
-    price.setUpdatedTime(new Date(proto.getUpdatedTime()));
-    return price;
-  }
-
+  /**
+   * <p>This method map CreateRequest type to Price type</p>
+   *
+   * @param proto CreateRequest object
+   * @return Price object
+   */
   public static Price fromProto(CreateRequest proto) {
     Price price = new Price();
     price.setPrice(proto.getPrice());
     price.setProduct_id(proto.getProductId());
     return price;
+  }
+
+  /**
+   * <p>Convert date in Date type to String type</p>
+   *
+   * @param date date in Date type
+   * @return Date in String type
+   */
+  private String convertDate2String(Date date) {
+    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    return dateFormat.format(date);
   }
 
   public int getProduct_id() {
@@ -59,10 +61,14 @@ public class Price extends baseDTO implements Serializable {
     this.price = price;
   }
 
+  /**
+   * <p>This method map PriceEntry type to CreateRequest type</p>
+   *
+   * @return CreateRequest object
+   */
   public PriceEntry toProto() {
     return PriceEntry.newBuilder().setId(getId()).setProductId(getProduct_id())
         .setPrice(getPrice()).setCreatedTime(convertDate2String(getCreatedTime()))
         .setUpdatedTime(convertDate2String(getUpdatedTime())).build();
   }
-
 }
