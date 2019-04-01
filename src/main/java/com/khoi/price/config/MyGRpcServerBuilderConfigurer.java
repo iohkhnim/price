@@ -1,4 +1,4 @@
-package com.khoi.price;
+package com.khoi.price.config;
 
 import io.grpc.ServerBuilder;
 import io.grpc.netty.GrpcSslContexts;

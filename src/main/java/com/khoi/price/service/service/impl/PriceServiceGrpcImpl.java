@@ -1,5 +1,7 @@
 package com.khoi.price.service.service.impl;
 
+import com.google.rpc.Code;
+import com.google.rpc.Status;
 import com.khoi.price.dao.IPriceDAO;
 import com.khoi.price.dto.Price;
 import com.khoi.proto.CreateRequest;
@@ -11,6 +13,7 @@ import com.khoi.proto.GetPriceRequest;
 import com.khoi.proto.GetPriceResponse;
 import com.khoi.proto.PriceEntry;
 import com.khoi.proto.PriceServiceGrpc;
+import io.grpc.protobuf.StatusProto;
 import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +34,17 @@ public class PriceServiceGrpcImpl extends PriceServiceGrpc.PriceServiceImplBase 
   }
 
   @Override
-  public void getPrice(GetPriceRequest request, StreamObserver<GetPriceResponse> streamObserver) {
-    streamObserver.onNext(
-        GetPriceResponse.newBuilder().setPrice(priceDAO.findPrice(request.getProductId()))
-            .build());
-    streamObserver.onCompleted();
+  public void getPrice(GetPriceRequest request, StreamObserver<GetPriceResponse> responseObserver) {
+    try {
+      responseObserver.onNext(
+          GetPriceResponse.newBuilder().setPrice(priceDAO.findPrice(request.getProductId()))
+              .build());
+      responseObserver.onCompleted();
+    } catch (Exception ex) {
+      Status status = Status.newBuilder().setCode(Code.NOT_FOUND_VALUE)
+          .setMessage("No such item").build();
+      responseObserver.onError(StatusProto.toStatusRuntimeException(status));
+    }
   }
 
   @Override
