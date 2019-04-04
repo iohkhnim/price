@@ -1,6 +1,8 @@
-version: '3'
+version: '3.4'
 services:
-  web:
-    build: .
-    ports:
-      - "8085:8080"
+  price:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: bridge
+
