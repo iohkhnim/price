@@ -58,7 +58,7 @@ public class PriceServiceGrpcImpl extends PriceServiceGrpc.PriceServiceImplBase 
   @Override
   public void delete(DeleteRequest request, StreamObserver<DeleteResponse> streamObserver) {
     priceDAO.deleteByProductId(request.getProductId());
-    streamObserver.onNext(DeleteResponse.getDefaultInstance());
+    streamObserver.onNext(DeleteResponse.newBuilder().setResult(true).build());
     streamObserver.onCompleted();
   }
 

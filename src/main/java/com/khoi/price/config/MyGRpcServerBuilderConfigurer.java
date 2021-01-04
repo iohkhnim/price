@@ -16,6 +16,7 @@ public class MyGRpcServerBuilderConfigurer extends GRpcServerBuilderConfigurer {
 
   @Value("${certChainFilePath}")
   private String certChainFilePath;
+
   @Value("${privateKeyFilePath}")
   private String privateKeyFilePath;
 
